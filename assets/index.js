@@ -3,8 +3,10 @@ const inquirer = require('inquirer');
 
 const fs = require('fs');
 
+const generateMarkdown = require('./utils/generateMarkdown.js');
+
 // TODO: Create an array of questions for user input
-const questions = inquirer.prompt([
+const questions = [
     {
         type: 'input',
         message: 'What is the title of the project?',
@@ -39,7 +41,7 @@ const questions = inquirer.prompt([
         type: 'list',
         message: 'Which license is the application covered under?',
         name: 'license',
-        choices: ['MIT', 'Apache 2.0', 'GPL'],
+        choices: ['The MIT License', 'Apache License, Version 2.0', 'GNU General Public License version 3'],
     },
     {
         type: 'input',
@@ -51,19 +53,26 @@ const questions = inquirer.prompt([
         message: 'Which is your email address?',
         name: 'email',
     },
-]);
+];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    const myREADME = generateMarkdown(data);
+    //const myREADME = generateMarkdown(data);
 
-    fs.writeFile(fileName, myREADME, (err) => 
+    fs.writeFile(fileName, generateMarkdown.generateMarkdown(data), (err) => 
         err ? console.error(err) : console.log('File successfully generated')
     );
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    const promptQuestions = () => {
+        return inquirer.prompt(questions);
+    };
+
+    promptQuestions()
+        .then((answers) => writeToFile('README.md', answers))
+};
 
 // Function call to initialize app
 init();
