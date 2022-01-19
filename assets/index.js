@@ -30,18 +30,28 @@ const questions = [
     {
         type: 'input',
         message: 'Which are the contribution guidelines?',
-        name: 'contribution',
+        name: 'contributing',
     },
     {
         type: 'input',
         message: 'How can the application be tested?',
-        name: 'test',
+        name: 'tests',
     },
     {
         type: 'list',
         message: 'Which license is the application covered under?',
         name: 'license',
-        choices: ['The MIT License', 'Apache License, Version 2.0', 'GNU General Public License version 3'],
+        choices: ['The MIT License', 'Apache License, Version 2.0', 'GNU General Public License version 3', 'N/A'],
+    },
+    {
+        type: 'input',
+        message: 'Which is the copyright year of the application (yyyy)?',
+        name: 'year',
+    },
+    {
+        type: 'input',
+        message: 'Which is the author of the application',
+        name: 'author',
     },
     {
         type: 'input',
@@ -62,7 +72,7 @@ function writeToFile(fileName, data) {
     fs.writeFile(fileName, generateMarkdown.generateMarkdown(data), (err) => 
         err ? console.error(err) : console.log('File successfully generated')
     );
-}
+};
 
 // TODO: Create a function to initialize app
 function init() {
