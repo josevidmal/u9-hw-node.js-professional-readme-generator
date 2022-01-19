@@ -50,7 +50,7 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Which is the author of the application',
+        message: 'Who is the author of the application?',
         name: 'author',
     },
     {
