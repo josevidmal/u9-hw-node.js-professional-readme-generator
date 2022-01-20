@@ -81,7 +81,7 @@ function init() {
     };
 
     promptQuestions()
-        .then((answers) => writeToFile('README.md', answers))
+        .then((answers) => writeToFile('Sample-README.md', answers))
 };
 
 // Function call to initialize app
