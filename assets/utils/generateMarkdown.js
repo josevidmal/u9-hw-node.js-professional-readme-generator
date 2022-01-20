@@ -69,56 +69,101 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.`;
       } else {
           return ''
       }
-}
+};
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title} 
-  ${renderLicenseBadge(data.license)}
-
-  ## Description
+  if (renderLicenseSection(data.license, data.year, data.author) === '') {
+    return `# ${data.title} 
+${renderLicenseBadge(data.license)}
   
-  ${data.description}
+## Description
+    
+${data.description}
+  
+## Table of Contents
+  
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
+  
+## Installation
+  
+${data.installation}
+  
+## Usage
+  
+${data.usage}
+  
+${renderLicenseLink(data.license)}
+  
+${renderLicenseSection(data.license, data.year, data.author)}
+  
+## Contributing
+  
+${data.contributing}
+  
+## Tests
+  
+${data.tests}
+  
+## Questions
+  
+For any quiestions about this project please contact me at:
+  
+* GitHub Profile: [${data.github}](https://github.com/${data.github})
+  
+* email: ${data.email}`;
+  } else {
+      return `# ${data.title} 
+${renderLicenseBadge(data.license)}
 
-  ## Table of Contents
+## Description
+  
+${data.description}
 
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [License](#license)
-  * [Contributing](#contributing)
-  * [Tests](#tests)
-  * [Questions](#questions)
+## Table of Contents
 
-  ## Installation
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
 
-  ${data.installation}
+## Installation
 
-  ## Usage
+${data.installation}
 
-  ${data.usage}
+## Usage
 
-  ## License
+${data.usage}
 
-  ${renderLicenseLink(data.license)}
+## License
 
-  ${renderLicenseSection(data.license, data.year, data.author)}
+${renderLicenseLink(data.license)}
 
-  ## Contributing
+${renderLicenseSection(data.license, data.year, data.author)}
 
-  ${data.contributing}
+## Contributing
 
-  ## Tests
+${data.contributing}
 
-  ${data.tests}
+## Tests
 
-  ## Questions
+${data.tests}
 
-  For any quiestions about this project please contact me at:
+## Questions
 
-  * GitHub Profile: [${data.github}](https://github.com/${data.github})
+For any quiestions about this project please contact me at:
 
-  * email: ${data.email}`;
-}
+* GitHub Profile: [${data.github}](https://github.com/${data.github})
+
+* email: ${data.email}`;
+    }
+};
 
 module.exports = {
   generateMarkdown
