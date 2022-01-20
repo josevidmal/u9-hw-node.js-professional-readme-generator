@@ -11,11 +11,13 @@ Now, for the generateMarkdown.js file, I basically used a set of if statements f
 
 ## Usage
 
-The application looks like this when it is initialized:
+The application looks like this when it is used:
 
 ![Professional Readme Generator 1](./assets/images/pro-readme-gen-1.png)
 
 ![Professional Readme Generator 2](./assets/images/pro-readme-gen-2.png)
+
+Once the last question is answered the application will create a Sample-README.md file with a similar structure to this one (section contents will change depending on the answers to the prompted questions): 
 
 ![Professional Readme Generator 3](./assets/images/pro-readme-gen-3.png)
 
